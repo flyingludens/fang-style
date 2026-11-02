@@ -9,8 +9,8 @@ fang 的通用 UI 组件与样式令牌库。纯 ES Modules，无构建步骤，
 ```jsonc
 // package.json
 "dependencies": {
-  "fang-style": "file:../Projects/fang-style"   // 同机：软链，改源码后重新 build 即生效
-  // 或推到远端后："fang-style": "git+https://github.com/<账号>/fang-style.git"
+  "fang-style": "github:flyingludens/fang-style#semver:^0.1.0"
+  // 本机开发这个库本身时，用 "file:../Projects/fang-style" 软链更直接
 }
 ```
 
