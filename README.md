@@ -52,7 +52,7 @@ function FangStyle() {
 |---|---|---|
 | `Drawer` | 从右缘滑入的侧抽屉 | `title` `onClose` `size` `closeLabel` |
 | `Dialog` | 阅读面板弹窗（标题 + 可滚正文 + ✕） | `title` `onClose` `size` `closeLabel` |
-| `ConfirmDialog` | 确认弹窗（Escape / 背板 / 取消都可退） | `title` `onConfirm` `onCancel` `confirmLabel` `cancelLabel` `busy` `danger`（默认 true） |
+| `ConfirmDialog` | 确认弹窗（Escape / 背板 / 取消都可退） | `title` `onConfirm` `onCancel` `confirmLabel` `cancelLabel` `busy` `danger`（默认 true：确认键填 --fang-danger 的 error 红；显式传 `danger={false}` 则用强调色） |
 | `Dropdown` | 面板内自绘下拉（原生 select 的选项列表会被裁切，所以自己画） | `label` `value` `options` `onChange` |
 | `Segmented` | 分段控件：一条轨道、全部选项可见、单选 | `label` `options` `value` `onChange` `testId` `disabled` |
 | `List` / `ListRow` | 一列可比的行：行间发丝线、悬停抬升、选中加强 | `ListRow` 传 `onActivate` 即为按钮行，不传为内容行 |

@@ -126,6 +126,11 @@ export const FANG_COMPONENTS = `
       .fang-btn-primary{background:var(--fang-accent);color:var(--fang-on-accent);
         padding:0 var(--fang-space-16)}
       .fang-btn-primary:hover:not(:disabled){background:color-mix(in srgb, var(--fang-accent) 86%, #000000);color:var(--fang-on-accent)}
+      /* 危险按钮：ConfirmDialog 的 danger=true 用它。复合在 fang-btn 上而不是单类——
+         单类会被后加载的 fang-btn 基色盖成死规则。填充从强调色换成 --fang-danger
+         （error 红），悬停加深与主按钮同一配方。 */
+      .fang-btn.fang-danger{background:var(--fang-danger);color:var(--fang-on-accent)}
+      .fang-btn.fang-danger:hover:not(:disabled){background:color-mix(in srgb, var(--fang-danger) 86%, #000000);color:var(--fang-on-accent)}
       /* 一页只有一个动作时的主按钮尺寸：同一架梯子上的一档，高、字距、内边距一起动。 */
       .fang-btn.fang-btn-xl{--fang-btn-height:var(--fang-btn-height-xl);font-size:var(--fang-font-size-lg);line-height:var(--fang-line-height-lg);
         padding:0 var(--fang-space-24)}
