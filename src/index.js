@@ -1,0 +1,10 @@
+/** fang-style 的唯一出口：组件、hook、整张样式表。 */
+export { Drawer, ConfirmDialog, Dialog } from './widgets/overlays.js'
+export { Chevron, Dropdown } from './widgets/dropdown.js'
+export { FileButton } from './widgets/file-button.js'
+export { Segmented } from './widgets/segmented.js'
+export { List, ListRow, SplitPane } from './widgets/list.js'
+export { TooltipLayer } from './widgets/tooltip.js'
+export { useDismiss, usePersisted, useClosingAnimation, useSessionState, SESSION_STORE } from './hooks.js'
+export { readStored, writeStored, storageAvailable } from './storage.js'
+export { FANG_CSS } from './styles.js'
