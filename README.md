@@ -84,6 +84,7 @@ function FangStyle() {
 - 层级 `--fang-layer-*`：rail 30 / menu 60 / drawer 75 / status 80 / modal 90
 - 文字墨色 `--fang-ink-primary/secondary/tertiary` 及浓度分层 `--fang-ink-whisper/hair/edge/faint`
 - 表面 `--fang-surface` / `--fang-surface-high`、状态填充 `--fang-hover/selected/active-fill`
+- 框架几何 `--fang-frame-gutter`(28，标题行与页的侧边留白) / `--fang-frame-inset-leading`(0，窗口左缘安全内缩——macOS 红绿灯就设它) / `--fang-titlebar-height`(68) / `--fang-statusbar-height`(30) / `--fang-rail-w`(264)
 
 **接宿主主题**：在自己的样式里把宿主变量映射到对应令牌（在 `fang-shell` 上覆盖）：
 
@@ -96,9 +97,44 @@ function FangStyle() {
 
 原则：宿主适配是使用方的事，库里永远只有 --fang-*。反过来，库令牌的默认值改动会落到所有使用方——改前跑一遍下游测试。
 
+## 布局原型（类桌面应用的骨架）
+
+一个带标题行、主页面、状态条的应用骨架，直接抄：
+
+```jsx
+<div className="fang-shell fang-col">
+  <div className="fang-titlebar">
+    <button className="fang-rail-toggle"><RailGlyph /></button>
+    <h1 className="fang-title">应用名</h1>
+    <span className="fang-spacer" />
+    {/* 行尾工具按钮 */}
+  </div>
+  <div className="fang-root">
+    <div className="fang-page">
+      {/* 一页内容；要滚动就再包一层 <div className="fang-scroll"> */}
+    </div>
+  </div>
+  <div className="fang-statusbar">
+    <span>左侧读数</span>
+    <span>中间读数</span>
+    <span style={{ textAlign: 'right' }}>右侧读数</span>
+  </div>
+</div>
+```
+
+**macOS 红绿灯**：窗口用 `titleBarStyle: 'hiddenInset'` 时，在壳上设一个令牌，标题行的行首内边距自动让出座位：
+
+```css
+.fang-shell{--fang-frame-inset-leading:80px}
+```
+
+Windows 或纯 web 不用设（默认 0）。嵌入宿主面板时，把宿主自己的让位变量映射过来（见「接宿主主题」）。
+
+**页的两个角色**：`fang-page` 是标准页（四边 gutter 内边距，与标题分隔线对齐）；`fang-main` 只声明「主列」角色，内边距归页自己——贴边的特殊页（编辑器那类）用它。
+
 ## 框架类（写页面直接用的）
 
-`fang-shell`（令牌根）· `fang-root` / `fang-col` / `fang-main`（主内容列）· `fang-scroll`（滚动区）· `fang-titlebar` / `fang-title` · `fang-rail*`（左缘滑入目录）· `fang-gap-under-row` 等四档间距 · `fang-row` / `fang-muted` / `fang-spacer`。组件类（`fang-btn` 及其 `primary / ghost / xl` 变体、`fang-input` 风格字段、`fang-card` 等）随组件文档在源码注释里。
+`fang-shell`（令牌根）· `fang-root` / `fang-col` / `fang-main`（主内容列）· `fang-page`（标准页）· `fang-statusbar`（底部状态条）· `fang-scroll`（滚动区）· `fang-titlebar` / `fang-title` / `fang-rail-toggle` · `fang-rail*`（左缘滑入目录）· `fang-gap-under-row` 等四档间距 · `fang-row` / `fang-muted` / `fang-spacer`。组件类（`fang-btn` 及其 `primary / ghost / danger / xl` 变体、`fang-input` 风格字段、`fang-card` 等）随组件文档在源码注释里。
 
 ## 开发约定（改库时）
 

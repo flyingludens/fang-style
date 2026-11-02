@@ -1,6 +1,6 @@
 {
   "name": "fang-style",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "fang 的通用 UI 组件与样式令牌库",
   "type": "module",
   "exports": { ".": "./src/index.js" },

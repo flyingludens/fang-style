@@ -13,12 +13,12 @@ export const FANG_FRAME = `
         display:flex;flex-direction:column;height:100%;min-height:0;min-width:0;
         background:var(--fang-bg);color:var(--fang-ink-primary)}
       /* 标题行。不设固定高：行就是它的内容（一排 36px 的胶囊）加上下内边距，所以
-         永远不会裁掉自己的控件。内边距把行保持在覆盖层内边距声明的高度——行和
-         内边距一起动。左侧留白额外读一个宿主管理的偏移量（--dsh-frame-leading-
-         clearance，默认 0）：宿主收起自己的侧栏时抬升它，框架行首的控件不丢座位。 */
+         永远不会裁掉自己的控件。行首内边距取基础一步间距与「安全内缩 + 一步间距」
+         的较大者：--fang-frame-inset-leading 是窗口左缘被系统控件（macOS 红绿灯）
+         或宿主面板占据的宽度，为 0 时落回基础间距。 */
       .fang-titlebar{display:flex;align-items:center;gap:var(--fang-space-8);flex:none;margin-bottom:var(--fang-space-16);min-width:0;
         padding-top:var(--fang-space-16);padding-bottom:var(--fang-space-8);
-        padding-left:max(var(--fang-space-16), calc(var(--dsh-frame-leading-clearance, 0) + var(--fang-space-8)));padding-right:var(--fang-space-12);
+        padding-left:max(var(--fang-space-16), calc(var(--fang-frame-inset-leading) + var(--fang-space-8)));padding-right:var(--fang-space-12);
         border-bottom:var(--fang-hairline) solid var(--fang-border-edge)}
       /* 描边画在元素自己的盒子上，元素的内边距嵌不进它——能嵌进的只有容器或外边距。
          壳自己的标题行没有容器，所以把同样的两个内边距声明成外边距，分隔线共用一套
@@ -62,6 +62,18 @@ export const FANG_FRAME = `
       .fang-gap-over-row{margin-top:var(--fang-space-8)}
       .fang-gap-over-section{margin-top:var(--fang-space-12)}
       .fang-main{flex:1 1 auto;min-width:0}
+      /* 标准页：主列里的一页。吃满剩余空间、竖向排布，四边内边距取 frame-gutter——
+         与标题行的左右外边距同一个数，页内容和标题分隔线天然对齐。需要贴边的特殊
+         页（编辑器那类）不用它：fang-main 是角色，内边距由页自己决定。 */
+      .fang-page{display:flex;flex-direction:column;flex:1 1 auto;min-height:0;min-width:0;
+        padding:var(--fang-frame-gutter)}
+      /* 底部状态条：一行小字，整条横贯框架底缘。三列网格（左读数、中位、右读数）
+         是参考实现给的形状——角落的读数不挤、中间的居中、两侧内容各占其半。 */
+      .fang-statusbar{flex:0 0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);position:relative;
+        align-items:center;gap:var(--fang-space-12);
+        height:var(--fang-statusbar-height);padding:0 var(--fang-space-16);
+        font-size:var(--fang-font-size-sm);line-height:var(--fang-line-height-sm);color:var(--fang-ink-tertiary);
+        border:none;background:var(--fang-bg);white-space:nowrap;overflow:visible}
       .fang-rail-toggle{display:inline-flex;align-items:center;justify-content:center;
         /* 命中的是共享目标档，不是紧凑行档：它是标题行的第一个控件，同排按钮都在
            36px，同一档它才和别的东西一样够得着。 */
