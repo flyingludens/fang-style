@@ -151,7 +151,7 @@ export const FANG_COMPONENTS = `
         border:var(--fang-hairline) solid color-mix(in srgb, var(--fang-highlight) 14%, transparent);border-radius:var(--fang-radius-sm);corner-shape:round;
         background:var(--fang-surface);
         color:var(--fang-highlight);font-size:var(--fang-font-size-sm);line-height:var(--fang-line-height-sm);
-        white-space:nowrap;box-shadow:0 2px 8px color-mix(in srgb, #000 30%, transparent)}
+        white-space:nowrap;box-shadow:0 2px 8px color-mix(in srgb, var(--fang-shade) 30%, transparent)}
       .fang-tip::after{content:'';position:absolute;top:calc(-1 * var(--fang-space-4));left:calc(50% - var(--fang-space-4));
         width:var(--fang-space-8);height:var(--fang-space-8);background:inherit;
         transform:rotate(45deg);border-radius:var(--fang-hairline)}
