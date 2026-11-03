@@ -1,9 +1,15 @@
 {
   "name": "fang-style",
-  "version": "0.1.2",
-  "description": "fang 的通用 UI 组件与样式令牌库",
+  "version": "0.2.0",
+  "description": "fang \u7684\u901a\u7528 UI \u7ec4\u4ef6\u4e0e\u6837\u5f0f\u4ee4\u724c\u5e93",
   "type": "module",
-  "exports": { ".": "./src/index.js" },
-  "files": ["src"],
-  "peerDependencies": { "react": ">=18" }
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=18"
+  }
 }
