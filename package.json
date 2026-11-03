@@ -1,7 +1,7 @@
 {
   "name": "fang-style",
   "version": "0.2.1",
-  "description": "fang \u7684\u901a\u7528 UI \u7ec4\u4ef6\u4e0e\u6837\u5f0f\u4ee4\u724c\u5e93",
+  "description": "fang 的通用 UI 组件与样式令牌库",
   "type": "module",
   "exports": {
     ".": "./src/index.js"
@@ -11,5 +11,9 @@
   ],
   "peerDependencies": {
     "react": ">=18"
+  },
+  "devDependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   }
 }
