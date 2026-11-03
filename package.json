@@ -1,6 +1,6 @@
 {
   "name": "fang-style",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "fang \u7684\u901a\u7528 UI \u7ec4\u4ef6\u4e0e\u6837\u5f0f\u4ee4\u724c\u5e93",
   "type": "module",
   "exports": {
