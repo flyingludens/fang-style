@@ -5,16 +5,16 @@
  * 顺序即层叠：背板的公共规则在前，抽屉的变体紧随其后覆盖它。
  */
 export const FANG_COMPONENTS = `
-      /* 背板。弹窗与抽屉共用一个类：公共骨架是弹窗的——居中、调暗、模糊，压在
-         modal 层；抽屉的背板不是模态，由下面一条按子元素区分的规则接管几何。 */
+      /* 背板。弹窗与抽屉共用一个类：它不是视觉层——不调暗、不模糊，弹窗的分离感
+         由弹窗自己的边框与阴影承担。背板只剩两件机械职责：弹层的定位上下文，和
+         点击收起的目标。 */
       .fang-backdrop{position:absolute;inset:0;z-index:var(--fang-layer-modal);display:flex;align-items:center;justify-content:center;
-        padding:var(--fang-space-24);background:color-mix(in srgb, var(--fang-bg) 62%, transparent);
-        backdrop-filter:blur(2px)}
+        padding:var(--fang-space-24)}
       /* 抽屉的背板不调暗：滑入的面板不是模态，旁边的正文保持可读、仍是正在工作的
          表面。变暗说了「关掉之前不许用」，而抽屉是写作时查阅的参考——它的分离靠
          面板自己的飞出阴影。这层保留是因为它是点击收起的目标和定位上下文。 */
       .fang-backdrop:has(> .fang-drawer){inset:var(--fang-titlebar-height) 0 0 0;z-index:var(--fang-layer-drawer);
-        align-items:stretch;justify-content:flex-end;padding:0;background:transparent;backdrop-filter:none}
+        align-items:stretch;justify-content:flex-end;padding:0}
       /* 抽屉：从右缘进来的面板，全高，只在内侧圆角——贴框的两个角保持直角。
          深度是两件事：飞出阴影（甩向左，来的方向）加顶缘的内缘光。 */
       .fang-drawer{display:flex;flex-direction:column;
