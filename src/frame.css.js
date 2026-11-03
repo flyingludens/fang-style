@@ -84,6 +84,10 @@ export const FANG_FRAME = `
          最后一行推过底缘，而不是滚到它。 */
       .fang-rail .fang-scroll{flex:1 1 auto;min-height:0}
       .fang-scroll{overflow:auto;padding:var(--fang-space-12);min-height:0;min-width:0}
+      /* 滚动条内置于组件：细、随主题墨色、原生 overlay 自动隐藏。用标准属性
+         （Chromium 121+ / Firefox），不用 ::-webkit-scrollbar 伪元素——那会关掉
+         原生 overlay 行为，滚动条变成常驻。 */
+      .fang-shell,.fang-shell *{scrollbar-width:thin;scrollbar-color:var(--fang-ink-edge) transparent}
       /* 行与占位。 */
       .fang-row{display:flex;gap:var(--fang-space-8);align-items:center;min-width:0}
       .fang-spacer{flex:1 1 auto;min-width:0}
